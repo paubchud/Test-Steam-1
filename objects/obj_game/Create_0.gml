@@ -4,7 +4,7 @@
 var player_list = {}
 
 // initialize host
-if(global.my_id == steam_lobby_get_owner_id())
+if(steam_lobby_is_owner())
 {
 	show_debug_message("You are the Host")
 	var host_player = instance_create_layer(16,16, "Instances", obj_player)

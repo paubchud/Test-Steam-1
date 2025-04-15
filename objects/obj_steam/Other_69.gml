@@ -8,6 +8,7 @@ switch(steam_async){
 	case "lobby_created":
 		var lobby_id = async_load[? "lobby_id"];
 		show_debug_message("Lobby Id: "+ string(lobby_id));
+		
 		steam_lobby_join_id(lobby_id) // Join hosted game
 	break;
 	
@@ -16,8 +17,9 @@ switch(steam_async){
 		room_goto(2)
 	break;
 	
-	case "":
-	
+	// Lobby List Requested
+	case "lobby_list":
+		
 	break;
 	
 	default:
