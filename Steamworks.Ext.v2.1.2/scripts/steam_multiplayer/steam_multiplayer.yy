@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"steam_multiplayer",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"steam_multiplayer",
+  "parent":{
+    "name":"Menu",
+    "path":"folders/Menu.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
