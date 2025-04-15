@@ -15,4 +15,12 @@ switch(steam_async){
 		// move to game room
 		room_goto(2)
 	break;
+	
+	case "":
+	
+	break;
+	
+	default:
+		show_debug_message("Event Type default");
+	break;
 }

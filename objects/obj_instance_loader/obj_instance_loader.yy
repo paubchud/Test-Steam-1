@@ -8,8 +8,8 @@
   "name":"obj_instance_loader",
   "overriddenProperties":[],
   "parent":{
-    "name":"Main",
-    "path":"folders/Main.yy",
+    "name":"Intro",
+    "path":"folders/Intro.yy",
   },
   "parentObjectId":null,
   "persistent":false,
