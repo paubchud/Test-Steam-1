@@ -1,5 +1,5 @@
 // initialize world
-// penis
+// ween
 
 // List of players
 var player_list = {}
