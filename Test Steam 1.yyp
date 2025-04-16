@@ -51,6 +51,7 @@
     {"id":{"name":"spr_gm_button","path":"sprites/spr_gm_button/spr_gm_button.yy",},},
     {"id":{"name":"spr_gm_textbox","path":"sprites/spr_gm_textbox/spr_gm_textbox.yy",},},
     {"id":{"name":"spr_player","path":"sprites/spr_player/spr_player.yy",},},
+    {"id":{"name":"Sprite6","path":"sprites/Sprite6/Sprite6.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",

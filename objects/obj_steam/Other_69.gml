@@ -9,6 +9,10 @@ switch(steam_async){
 		var lobby_id = async_load[? "lobby_id"];
 		show_debug_message("Lobby Id: "+ string(lobby_id));
 		
+		// Set lobby data
+		steam_lobby_set_data("isPaubLobby", "true")
+		steam_lobby_set_data("Creator", steam_get_persona_name())
+		
 		steam_lobby_join_id(lobby_id) // Join hosted game
 	break;
 	
@@ -19,7 +23,12 @@ switch(steam_async){
 	
 	// Lobby List Requested
 	case "lobby_list":
-		
+	
+	break;
+	
+	// Persona name via ID requested
+	case "user_persona_name":
+	
 	break;
 	
 	default:
