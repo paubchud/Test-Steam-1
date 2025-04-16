@@ -9,9 +9,14 @@ switch(steam_async){
 		
 		// Set lobby data
 		steam_lobby_set_data("isGameMakerTest", "true")
-		steam_lobby_set_data("host", steam_get_persona_name())
+		steam_lobby_set_data("Creator", steam_get_persona_name())
 		
 		//steam_lobby_join_id(lobby_id) // Join hosted game
+	break;
+	
+	// Player has joined the lobby
+	case "lobby_chat_update":
+	
 	break;
 	
 	case "lobby_joined":
