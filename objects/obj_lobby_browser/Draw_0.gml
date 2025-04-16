@@ -1,4 +1,1 @@
-for (var i = 0; i < array_length(global.lobbies); i++) {
-    var name = global.lobbies[i][1];
-    draw_text(200, base_y + i * 30, name);
-}
+draw_text(32,32, $"Lobby List Requested? {steam_lobby_list_is_loading() ? "Yes" : "No"}");
