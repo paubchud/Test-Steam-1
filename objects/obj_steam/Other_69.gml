@@ -9,9 +9,6 @@ switch(steam_async){
 		var lobby_id = async_load[? "lobby_id"];
 		show_debug_message("Lobby Id: "+ string(lobby_id));
 		
-		// Set lobby data
-		steam_lobby_set_data("isPaubLobby", "true")
-		steam_lobby_set_data("Creator", steam_get_persona_name())
 		
 		steam_lobby_join_id(lobby_id) // Join hosted game
 	break;
@@ -19,6 +16,12 @@ switch(steam_async){
 	case "lobby_joined":
 		// move to game room
 		room_goto(2)
+		if(steam_lobby_is_owner())
+		{
+			// Set lobby data
+			steam_lobby_set_data("isPaubLobby", "true")
+			steam_lobby_set_data("Creator", steam_get_persona_name())	
+		}
 	break;
 	
 	// Lobby List Requested
