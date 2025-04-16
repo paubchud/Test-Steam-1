@@ -5,11 +5,14 @@ show_debug_message("[Steam Async] event_type: " + string(steam_async));
 switch(steam_async){
 	case "lobby_created":
 		var lobby_id = steam_lobby_get_lobby_id();
-		show_debug_message("Lobby Id: "+ string(lobby_id));
+		show_debug_message("Lobby Id     : "+ string(lobby_id));
+		show_debug_message("Lobby OwnerID: "+ steam_lobby_get_owner_id())
+		show_debug_message("Is Owner?    : "+ steam_lobby_is_owner())
 		
 		// Set lobby data
 		steam_lobby_set_data("isGameMakerTest", "true")
-		steam_lobby_set_data("Creator", steam_get_persona_name())
+		steam_lobby_set_data(string(lobby_id), steam_get_persona_name())
+		
 		
 		//steam_lobby_join_id(lobby_id) // Join hosted game
 	break;

@@ -5,7 +5,7 @@ if (steam_async == "lobby_list") {
 	
     for (var i = 0; i < count; i++) {
 		var lobbyID = string(steam_lobby_list_get_lobby_id(i));
-		var host = steam_lobby_get_data("Creator");
+		var host = steam_lobby_get_owner_id();
 		
 		// Debug message for lobby Data
 		show_debug_message("Lobby ID         : "+string(lobbyID))
@@ -24,4 +24,7 @@ if (steam_async == "lobby_list") {
 		// Push button into array of buttons
 	    array_push(lobbies, lobby_button);
     }
+}
+if (steam_async == "lobby_list") {
+	
 }
