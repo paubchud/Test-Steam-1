@@ -30,10 +30,22 @@ switch(steam_async){
 	case "lobby_joined":
 		// move to game room
 		room_goto(2)
+		show_debug_message("[debug] Lobby ID: "+string(steam_lobby_get_lobby_id()))
+		
+		
 		show_debug_message("[debug] Is Host?: "+string(steam_lobby_is_owner()))
 		
 		var datHost = steam_lobby_get_data("hostID")
 		show_debug_message("[debug] Host  ID(data): "+string(datHost))
+		
+		var memberCount = steam_lobby_get_member_count()
+			show_debug_message("[debug] Member Count  : "+string(memberCount))
+		show_debug_message("Members:")
+		for (var j = 0; j < memberCount;j++) {
+			var memberID = steam_lobby_get_member_id(j)
+			steam_get_user_persona_name(memberID)
+			show_debug_message(string(memberID))
+		}
 	break;
 	
 	// Lobby List Requested
@@ -47,14 +59,17 @@ switch(steam_async){
 			var lobbyID = steam_lobby_list_get_lobby_id(i);
 			show_debug_message("[debug] Lobby ID      : "+string(lobbyID))
 			
-			var datHost = steam_lobby_get_data("hostID")
-			show_debug_message("[debug] Host  ID(data): "+string(datHost))
-			
 			var funcHost = steam_lobby_list_get_lobby_owner_id(i)
 			show_debug_message("[debug] Host  ID(func): "+string(funcHost))
 			
-			var datPer = steam_lobby_get_data("hostPer")
-			show_debug_message("[debug] Host Per(data): "+string(datPer))
+			var memberCount = steam_lobby_list_get_lobby_member_count(i)
+			show_debug_message("[debug] Member Count  : "+string(memberCount))
+			
+			show_debug_message("Members:")
+			for (var j = 0; j < memberCount;j++) {
+				var memberID = steam_lobby_list_get_lobby_member_id(i,j)
+				show_debug_message(string(memberID))
+			}
 			
 			//funcPer = steam_get_user_persona_name(datHost);
 			//show_debug_message("[debug] Host Per(func): "+string(funcPer))
