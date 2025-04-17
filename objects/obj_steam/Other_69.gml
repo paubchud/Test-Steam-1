@@ -30,6 +30,10 @@ switch(steam_async){
 	case "lobby_joined":
 		// move to game room
 		room_goto(2)
+		show_debug_message("[debug] Is Host?: "+string(steam_lobby_is_owner()))
+		
+		var datHost = steam_lobby_get_data("hostID")
+		show_debug_message("[debug] Host  ID(data): "+string(datHost))
 	break;
 	
 	// Lobby List Requested
@@ -52,8 +56,8 @@ switch(steam_async){
 			var datPer = steam_lobby_get_data("hostPer")
 			show_debug_message("[debug] Host Per(data): "+string(datPer))
 			
-			var funcPer = steam_get_user_persona_name(datHost);
-			show_debug_message("[debug] Host Per(func): "+string(funcPer))
+			//funcPer = steam_get_user_persona_name(datHost);
+			//show_debug_message("[debug] Host Per(func): "+string(funcPer))
 	    }
 	break;
 	
