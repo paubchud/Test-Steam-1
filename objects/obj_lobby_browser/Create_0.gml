@@ -1,5 +1,5 @@
-lobbies = [];
-base_y = 200;
+var lobbies = [];
+var base_y = 200;
 steam_lobby_list_add_string_filter("isGameMakerTest", "true", steam_lobby_list_filter_eq);
 
 var refresh_button = instance_create_layer(100, 100, "Instances", obj_button);
