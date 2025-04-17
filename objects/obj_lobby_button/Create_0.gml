@@ -3,5 +3,5 @@
 
 // Inherit the parent event
 event_inherited();
-var lobbyID = 0;
-click_function = function(lobbyID){show_debug_message("Default")}; // Overwrite click func to input lobby ID
+lobbyID = 0;
+click_function = function(lobbyID){steam_lobby_join_id(int64(lobbyID))};
