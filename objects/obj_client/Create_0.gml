@@ -1,7 +1,7 @@
-// Handles: Map (Path, tileset), 
-
-// List of players
+// Variables (Default)
+var isHost = 0; // not host
 player_list = []
+
 
 // initialize host
 if(steam_lobby_is_owner())

@@ -1,6 +1,7 @@
 // Mentions any steam async event that occurs
 var steam_async = async_load[? "event_type"];
-show_debug_message("[Steam Async] event_type: " + string(steam_async));
+show_debug_message("[Steam Async] event: " + string(steam_async));
+show_debug_message("[Steam Async] INFO : " + json_encode(async_load,true));
 
 switch(steam_async){
 	case "lobby_created":
@@ -24,12 +25,29 @@ switch(steam_async){
 	
 	// Player has joined the lobby
 	case "lobby_chat_update":
-	
+		// Add player to server list (Host)
+		// Send packet with current player list (Host to all)
+		//
 	break;
 	
 	case "lobby_joined":
 		// move to game room
 		room_goto(2)
+		// Create server obj if is host
+		var serverID = 0;
+		if(steam_lobby_is_owner()) serverID = instance_create_layer(0,0,"Instances", obj_server)
+		if(serverID != 0) show_debug_message("[debug] Server obj created")
+		
+		// Create client obj
+		var clientID = instance_create_layer(0,1,"Instances", obj_client)
+		show_debug_message("[debug] Client obj created")
+		
+		if(serverID != 0){
+			show_debug_message("[debug] Client obj filling")
+			clientID.isHost = 1;
+		}
+		
+		
 		show_debug_message("[debug] Lobby ID: "+string(steam_lobby_get_lobby_id()))
 		
 		
