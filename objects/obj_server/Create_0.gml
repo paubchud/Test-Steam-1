@@ -1,9 +1,4 @@
 // Initiate Server Variables
 
-// Server List
-playerList = []
-
-steamID = 0
-spawnPoint = [16,16]
-
-array_push(playerList, [steamID, spawnPoint])
+// Player list will store: Name, ID, Current x, Current y, Data String (later)
+playerList = [[global.my_name, global.my_id, 0, 0, 0]]
