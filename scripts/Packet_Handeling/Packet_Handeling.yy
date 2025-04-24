@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Packet_Handeling",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Packet_Handeling",
+  "parent":{
+    "name":"Game",
+    "path":"folders/Game.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
