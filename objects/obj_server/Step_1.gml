@@ -5,10 +5,28 @@ while(steam_net_packet_receive()) {
 	steam_net_packet_get_data(_inbuf)
 	buffer_seek(_inbuf, buffer_seek_start, 0)
 	var _type = buffer_read(_inbuf, buffer_u8)
+	show_debug_message("[Server] type: "+string(_type))
 	
 	switch _type {
+		case PACKET.PLAYER_JOIN:
+			show_debug_message("[Server] Player Join")
+			// Add to list
+			//array_push(playerList, )
+			// Send full list to others
+			
+		break
+		
+		
+		case PACKET.PLAYER_LEAVE:
+			show_debug_message("[Server] Player Leave")
+			// Remove from list
+			
+			// Send new list to others
+		
+		break
+		
 		case PACKET.MOVEMENT_UPDATE_CLIENT: // SENT FROM CLIENT
-			show_debug_message("Packet Received from Client")
+			show_debug_message("[Server] POS Update")
 			var xPos = buffer_read(_inbuf, buffer_u16)
 			var yPos = buffer_read(_inbuf, buffer_u16)
 			var IDsender = buffer_read(_inbuf, buffer_u64)
@@ -20,6 +38,6 @@ while(steam_net_packet_receive()) {
 			
 			buffer_delete(_inbuf)
 		break
-		default: show_debug_message("[Server Packet] Unknown Packet")
+		default: show_debug_message("[Server] Unknown")
 	}
 }

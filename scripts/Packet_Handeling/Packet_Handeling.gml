@@ -4,6 +4,7 @@ function player_list_sync(steam_id){
 	buffer_write(_b, buffer_u8, PACKET.SYNC_PLAYER_LIST)
 	buffer_write(_b, buffer_string, playerList)
 	steam_net_packet_send(steam_id, _b)
+	show_debug_message("[Spacket] Pos Sent")
 	buffer_delete(_b)
 }
 
@@ -16,7 +17,17 @@ function update_player_pos_to_clients(xPos, yPos, IDsender, IDreceiver){
 	buffer_write(_b, buffer_u16, yPos)
 	buffer_write(_b, buffer_u16, IDsender)
 	steam_net_packet_send(IDreceiver, _b)
-	show_debug_message("Packet Sent to Clients")
+	show_debug_message("[Spacket] Pos Sent")
+	buffer_delete(_b)
+}
+
+//Client obj[Create]: On joining, send host player data
+function send_player_data(data){
+	var _b = buffer_create(2, buffer_fixed, 1)
+	buffer_write(_b, buffer_u8, PACKET.PLAYER_JOIN)
+	buffer_write(_b, buffer_u16, data)
+	steam_net_packet_send(steam_lobby_get_owner_id(), _b)
+	show_debug_message("[Cpacket] Data Sent")
 	buffer_delete(_b)
 }
 
@@ -29,13 +40,13 @@ function update_player_pos_to_server(xPos, yPos, IDsender){
 	buffer_write(_b, buffer_u16, yPos)
 	buffer_write(_b, buffer_u64, IDsender)
 	steam_net_packet_send(steam_lobby_get_owner_id(), _b)
-	show_debug_message("Packet Sent to Server")
+	show_debug_message("[Cpacket] Pos Sent")
 	buffer_delete(_b)
 }
 
 
 enum PACKET {
-	SYNC_PLAYER_LIST = 1,
-	MOVEMENT_UPDATE_SERVER,
-	MOVEMENT_UPDATE_CLIENT
+	PLAYER_JOIN, PLAYER_LEAVE,
+	MOVEMENT_UPDATE_SERVER,	MOVEMENT_UPDATE_CLIENT,
+	SYNC_PLAYER_LIST
 }

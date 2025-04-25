@@ -5,7 +5,7 @@ switch(async_load[? "event_type"])
 		var userName = steam_get_user_persona_name_sync(userID)
 		if (async_load[? "change_flags"] & steam_lobby_member_change_entered)
 		{
-			show_debug_message("[server] Player Joined")
+			show_debug_message("[Server Async] Player Joined")
 			array_push(playerList, [userName, userID, 0, 0, 0])
 		}
 		player_list_sync(userID)

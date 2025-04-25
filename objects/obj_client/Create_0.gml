@@ -1,6 +1,5 @@
 // Variables (Default)
-show_debug_message("Create Start")
-var isHost = 0; // not host
+var isHost = steam_lobby_is_owner() ? 1:0
 playerList = []
 spawnMult = 16
 enum INDEX{
@@ -10,7 +9,6 @@ enum INDEX{
 	YSPAWN = 3,
 	DATA = 4
 }
-show_debug_message("Enums Initialized")
 
 // initialize host
 if(isHost)
@@ -21,9 +19,10 @@ else
 {
 	show_debug_message("You are not the Host")
 }
+
+
 // Create everyone before you
 
 
 // Create yourself
-show_debug_message("Self Created")
-var player = instance_create_layer(spawnMult*playerList+16, 16, "Instances", obj_player)
+var player = instance_create_layer(spawnMult*array_length(playerList)+16, 16, "Instances", obj_player)

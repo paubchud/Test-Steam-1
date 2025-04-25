@@ -9,10 +9,10 @@ switch(steam_async){
 		
 		// Set lobby data
 		steam_lobby_set_data("isGameMakerTest", "true")
-		steam_lobby_set_data("hostID"		  , global.my_id)
+		steam_lobby_set_data("hostID"		  , string(global.my_id))
 		steam_lobby_set_data("hostPer"		  , steam_get_persona_name())
 		
-		//steam_lobby_join_id(lobby_id) // Join hosted game
+		steam_lobby_join_id(lobby_id) // Join hosted game
 		
 		
 		
@@ -33,19 +33,6 @@ switch(steam_async){
 	case "lobby_joined":
 		// move to game room
 		room_goto(2)
-		
-		// Create client obj
-		/*var clientID = */
-		instance_create_layer(0,1,"Instances", obj_client)
-		//clientID.isHost = 0;
-		//show_debug_message("[debug] Client obj created")
-		
-		// Create server obj if is host
-		if(steam_lobby_is_owner()) {
-			show_debug_message("[debug] Server obj created")
-			instance_create_layer(0,0,"Instances", obj_server)
-			//clientID.isHost = 1;
-		}
 		
 		//show_debug_message("[debug] Lobby ID: "+string(steam_lobby_get_lobby_id()))
 		//show_debug_message("[debug] Is Host?: "+string(steam_lobby_is_owner()))
