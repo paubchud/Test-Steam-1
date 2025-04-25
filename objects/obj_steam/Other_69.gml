@@ -36,7 +36,7 @@ switch(steam_async){
 		
 		// Create client obj
 		var clientID = instance_create_layer(0,1,"Instances", obj_client)
-			clientID.isHost = 0;
+		clientID.isHost = 0;
 		show_debug_message("[debug] Client obj created")
 		
 		// Create server obj if is host
