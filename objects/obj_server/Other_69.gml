@@ -7,6 +7,6 @@ switch(async_load[? "event_type"])
 		{
 			show_debug_message("[Server Async] Player Joined")
 			array_push(playerList, [userName, userID, 0, 0, 0])
+			request_data(userID)
 		}
-		player_list_sync(userID)
 }

@@ -1,7 +1,8 @@
 // Variables (Default)
-var isHost = steam_lobby_is_owner() ? 1:0
+isHost = steam_lobby_is_owner() ? 1:0
 playerList = []
 data = 0
+playerToBeAdded = false;
 spawnMult = 16
 enum INDEX{
 	NAME = 0,

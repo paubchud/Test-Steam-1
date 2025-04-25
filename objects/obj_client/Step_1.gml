@@ -8,11 +8,24 @@ while(steam_net_packet_receive()) {
 	show_debug_message("[Client] type: "+string(_type))
 	
 	switch _type {
-		case PACKET.SYNC_PLAYER_LIST:
+		/* Client Packets Client Receives
+		SYNC_PLAYER_LIST: Update player list received from server
+		REQUEST_DATA: Send data requested by server
+		MOVEMENT_UPDATE_SERVER: Update player position of other players
+		*/
+		case PACKET.PLAYER_LIST_SYNC:
 			show_debug_message("[Client] PL Sync")
-			// update playerList
+			// Update playerList
+			playerList = buffer_read(_inbuf, buffer_string)
 			
-			// 
+			// Make newly added character
+			if(steam_lobby_member_change_entered)
+			{
+				show_debug_message("Create character")
+			}
+		break
+		case PACKET.REQUEST_DATA:
+			show_debug_message("[Client] Data Requested")
 		break
 		case PACKET.MOVEMENT_UPDATE_SERVER: // SENT FROM SERVER
 			show_debug_message("[Server] POS Update")
@@ -27,9 +40,45 @@ while(steam_net_packet_receive()) {
 					show_debug_message("[Client] Y: "+ yPos)
 				}
 			}
+		break
+		
+		
+		
+		/* Server Packets: Server/Host Receives
+		PLAYER_JOIN: Takes list element added by Async[lobby chat] and adds player data
+		PLAYER_LEAVE: Handles player leaving
+		MOVEMENT_UPDATE_SERVER: 
+		*/
+		case PACKET.PLAYER_JOIN:
+			show_debug_message("[Server] Player Join")
+			// Add data to player
+			playerList[array_length(playerList)-1][INDEX.DATA] = buffer_read(_inbuf, buffer_u16)
 			
-			buffer_delete(_inbuf)
+			// Send full list to others
+			for(var i = 1; i < array_length(playerList); i++){ // skip host
+				player_list_sync(playerList[i][INDEX.ID])
+			}
+			
+		break
+		case PACKET.PLAYER_LEAVE:
+			show_debug_message("[Server] Player Leave")
+			// Remove from list
+			
+			// Send new list to others
+		
+		break
+		case PACKET.MOVEMENT_UPDATE_CLIENT: // SENT FROM CLIENT
+			show_debug_message("[Server] POS Update")
+			var xPos = buffer_read(_inbuf, buffer_u16)
+			var yPos = buffer_read(_inbuf, buffer_u16)
+			var IDsender = buffer_read(_inbuf, buffer_u64)
+			// Loop through players to update movement
+			for(i = 0; i <= array_length(playerList); i++) {
+				// Possiblyu use index variable instead of ID search idk
+				update_player_pos_to_clients(xPos,yPos,IDsender, playerList[i][INDEX.ID]) // Possibly make index variable
+			}
 		break
 		default: show_debug_message("[Client] Unknown")
 	}
+	buffer_delete(_inbuf)
 }
