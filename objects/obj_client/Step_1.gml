@@ -25,7 +25,8 @@ while(steam_net_packet_receive()) {
 			}
 		break
 		case PACKET.REQUEST_DATA:
-			show_debug_message("[Client] Data Requested")
+			show_debug_message("[Client] Sending Data As Requested")
+			send_player_data(data)
 		break
 		case PACKET.MOVEMENT_UPDATE_SERVER: // SENT FROM SERVER
 			show_debug_message("[Server] POS Update")
@@ -78,7 +79,7 @@ while(steam_net_packet_receive()) {
 				update_player_pos_to_clients(xPos,yPos,IDsender, playerList[i][INDEX.ID]) // Possibly make index variable
 			}
 		break
-		default: show_debug_message("[Client] Unknown")
+		default: show_debug_message("Unknown Packet")
 	}
 	buffer_delete(_inbuf)
 }

@@ -28,4 +28,4 @@ else
 
 
 // Create yourself
-var player = instance_create_layer(spawnMult*array_length(playerList)+16, 16, "Instances", obj_player)
+//var player = instance_create_layer(spawnMult*array_length(playerList)+16, 16, "Instances", obj_player)
