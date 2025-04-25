@@ -1,4 +1,5 @@
 // Variables (Default)
+show_debug_message("Create Start")
 var isHost = 0; // not host
 playerList = []
 spawnMult = 16
@@ -9,6 +10,7 @@ enum INDEX{
 	YSPAWN = 3,
 	DATA = 4
 }
+show_debug_message("Enums Initialized")
 
 // initialize host
 if(isHost)
@@ -23,4 +25,5 @@ else
 
 
 // Create yourself
+show_debug_message("Self Created")
 var player = instance_create_layer(spawnMult*playerList+16, 16, "Instances", obj_player)

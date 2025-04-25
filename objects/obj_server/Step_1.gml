@@ -8,6 +8,7 @@ while(steam_net_packet_receive()) {
 	
 	switch _type {
 		case PACKET.MOVEMENT_UPDATE_CLIENT: // SENT FROM CLIENT
+			show_debug_message("Packet Received from Client")
 			var xPos = buffer_read(_inbuf, buffer_u16)
 			var yPos = buffer_read(_inbuf, buffer_u16)
 			var IDsender = buffer_read(_inbuf, buffer_u64)

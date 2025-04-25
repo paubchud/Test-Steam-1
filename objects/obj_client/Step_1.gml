@@ -11,6 +11,7 @@ while(steam_net_packet_receive()) {
 		
 		break
 		case PACKET.MOVEMENT_UPDATE_SERVER: // SENT FROM SERVER
+			show_debug_message("Packet Received from Server")
 			// Receive movement from another player via server
 			var xPos = buffer_read(_inbuf, buffer_u16)
 			var yPos = buffer_read(_inbuf, buffer_u16)

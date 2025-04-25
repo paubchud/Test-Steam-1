@@ -16,6 +16,7 @@ function update_player_pos_to_clients(xPos, yPos, IDsender, IDreceiver){
 	buffer_write(_b, buffer_u16, yPos)
 	buffer_write(_b, buffer_u16, IDsender)
 	steam_net_packet_send(IDreceiver, _b)
+	show_debug_message("Packet Sent to Clients")
 	buffer_delete(_b)
 }
 
@@ -28,6 +29,7 @@ function update_player_pos_to_server(xPos, yPos, IDsender){
 	buffer_write(_b, buffer_u16, yPos)
 	buffer_write(_b, buffer_u64, IDsender)
 	steam_net_packet_send(steam_lobby_get_owner_id(), _b)
+	show_debug_message("Packet Sent to Server")
 	buffer_delete(_b)
 }
 

@@ -35,28 +35,30 @@ switch(steam_async){
 		room_goto(2)
 		
 		// Create client obj
-		var clientID = instance_create_layer(0,1,"Instances", obj_client)
-		clientID.isHost = 0;
-		show_debug_message("[debug] Client obj created")
+		/*var clientID = */
+		instance_create_layer(0,1,"Instances", obj_client)
+		//clientID.isHost = 0;
+		//show_debug_message("[debug] Client obj created")
 		
 		// Create server obj if is host
 		if(steam_lobby_is_owner()) {
 			show_debug_message("[debug] Server obj created")
 			instance_create_layer(0,0,"Instances", obj_server)
-			clientID.isHost = 1;
+			//clientID.isHost = 1;
 		}
 		
-		show_debug_message("[debug] Lobby ID: "+string(steam_lobby_get_lobby_id()))
-		show_debug_message("[debug] Is Host?: "+string(steam_lobby_is_owner()))
-		show_debug_message("[debug] Is Host?: "+string(clientID.isHost))
-		show_debug_message("[debug] Host  ID(data): "+string(steam_lobby_get_data("hostID")))
-		show_debug_message("[debug] Member Count  : "+string(steam_lobby_get_member_count()))
+		//show_debug_message("[debug] Lobby ID: "+string(steam_lobby_get_lobby_id()))
+		//show_debug_message("[debug] Is Host?: "+string(steam_lobby_is_owner()))
+		//show_debug_message("[debug] Is Host?: "+string(clientID.isHost))
+		//show_debug_message("[debug] Host  ID(data): "+string(steam_lobby_get_data("hostID")))
+		//show_debug_message("[debug] Member Count  : "+string(steam_lobby_get_member_count()))
+		/*
 		show_debug_message("[debug] Members:")
 		for (var j = 0; j < steam_lobby_get_member_count();j++) {
 			var memberID = steam_lobby_get_member_id(j)
 			steam_get_user_persona_name(memberID)
-			//show_debug_message(string(memberID))
-		}
+			show_debug_message(string(memberID))
+		}//*/
 	break;
 	
 	// Lobby List Requested
