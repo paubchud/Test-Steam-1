@@ -1,6 +1,7 @@
 // Variables (Default)
 var isHost = steam_lobby_is_owner() ? 1:0
 playerList = []
+data = 0
 spawnMult = 16
 enum INDEX{
 	NAME = 0,
@@ -18,6 +19,7 @@ if(isHost)
 else
 {
 	show_debug_message("You are not the Host")
+	send_player_data(data)
 }
 
 
