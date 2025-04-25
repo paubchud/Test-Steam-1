@@ -1,7 +1,7 @@
 // Mentions any steam async event that occurs
 var steam_async = async_load[? "event_type"];
-show_debug_message("[Steam Async] event: " + string(steam_async));
-show_debug_message("[Steam Async] INFO : " + json_encode(async_load,true));
+//show_debug_message("[Steam Async] event: " + string(steam_async));
+//show_debug_message("[Steam Async] INFO : " + json_encode(async_load,true));
 
 switch(steam_async){
 	case "lobby_created":
@@ -38,7 +38,7 @@ switch(steam_async){
 		//show_debug_message("[debug] Is Host?: "+string(steam_lobby_is_owner()))
 		//show_debug_message("[debug] Is Host?: "+string(clientID.isHost))
 		//show_debug_message("[debug] Host  ID(data): "+string(steam_lobby_get_data("hostID")))
-		//show_debug_message("[debug] Member Count  : "+string(steam_lobby_get_member_count()))
+		show_debug_message("[debug] Member Count  : "+string(steam_lobby_get_member_count()))
 		/*
 		show_debug_message("[debug] Members:")
 		for (var j = 0; j < steam_lobby_get_member_count();j++) {

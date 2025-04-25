@@ -51,12 +51,13 @@ while(steam_net_packet_receive()) {
 		MOVEMENT_UPDATE_SERVER: 
 		*/
 		case PACKET.PLAYER_JOIN:
-			show_debug_message("[Server] Player Join")
+			show_debug_message("[Server] Updating Player Data")
+			show_debug_message("[Server] " + string(steam_lobby_get_member_count()))
 			// Add data to player
-			playerList[array_length(playerList)-1][INDEX.DATA] = buffer_read(_inbuf, buffer_u16)
+			playerList[steam_lobby_get_member_count()-1][INDEX.DATA] = buffer_read(_inbuf, buffer_u16)
 			
 			// Send full list to others
-			for(var i = 1; i < array_length(playerList); i++){ // skip host
+			for(var i = 1; i < steam_lobby_get_member_count(); i++){ // skip host
 				player_list_sync(playerList[i][INDEX.ID])
 			}
 			
