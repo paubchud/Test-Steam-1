@@ -1,6 +1,7 @@
 /// @description Create Client and Server
 // Create client obj
 global.client = instance_create_layer(0,16,"Instances", obj_client)
+print_player_list()
 //show_debug_message("[debug] Client obj created")
 		
 // Create server obj if is host
