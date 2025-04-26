@@ -19,9 +19,18 @@ while(steam_net_packet_receive()) {
 			playerList = buffer_read(_inbuf, buffer_string)
 			
 			// Make newly added character
-			if(steam_lobby_member_change_entered)
-			{
+			if(steam_lobby_member_change_entered){
 				show_debug_message("Create character")
+				if (playerList[array_length(playerList)][INDEX.ID] == global.my_id){
+					show_debug_message("Create full list before")
+					for(var i = 0; i < array_length(playerList); i++){
+						
+					}
+				}
+				else {
+					show_debug_message("Create last")
+					
+				}
 			}
 		break
 		case PACKET.REQUEST_DATA:
@@ -58,7 +67,7 @@ while(steam_net_packet_receive()) {
 			
 			
 			// Send full list to others
-			for(var i = 0; i < array_length(playerList); i++){ // skip host
+			for(var i = 1; i < array_length(playerList); i++){ // skip host
 				player_list_sync(playerList[i][INDEX.ID])
 			}
 		break
