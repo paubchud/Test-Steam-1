@@ -1,5 +1,4 @@
 ///@description Packet Listening
-var _inbuf = buffer_create(1, buffer_grow, 1)
 while(steam_net_packet_receive()) {
 	var _sender = steam_net_packet_get_sender_id()
 	steam_net_packet_get_data(_inbuf)
@@ -83,4 +82,3 @@ while(steam_net_packet_receive()) {
 		default: show_debug_message("Unknown Packet")
 	}
 }
-buffer_delete(_inbuf)

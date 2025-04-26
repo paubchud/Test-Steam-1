@@ -4,6 +4,7 @@ playerList = []
 data = 0
 playerToBeAdded = false;
 spawnMult = 16
+var _inbuf = buffer_create(1, buffer_grow, 1)
 enum INDEX{
 	NAME = 0,
 	ID = 1,
