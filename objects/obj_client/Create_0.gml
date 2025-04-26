@@ -20,9 +20,9 @@ if(isHost)
 else
 {
 	show_debug_message("You are not the Host")
+	print_player_list()
 	send_player_data(data)
 }
-
 
 // Create everyone before you
 

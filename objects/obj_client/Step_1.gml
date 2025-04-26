@@ -50,17 +50,17 @@ while(steam_net_packet_receive()) {
 		PLAYER_LEAVE: Handles player leaving
 		MOVEMENT_UPDATE_SERVER: 
 		*/
-		case PACKET.PLAYER_JOIN:
+		case PACKET.UPDATE_DATA:
 			show_debug_message("[Server] Updating Player Data")
-			show_debug_message("[Server] " + string(steam_lobby_get_member_count()))
+			print_player_list()
 			// Add data to player
-			playerList[steam_lobby_get_member_count()-1][INDEX.DATA] = buffer_read(_inbuf, buffer_u16)
+			playerList[array_length(playerList)-1][INDEX.DATA] = buffer_read(_inbuf, buffer_u16)
+			
 			
 			// Send full list to others
-			for(var i = 1; i < steam_lobby_get_member_count(); i++){ // skip host
+			for(var i = 0; i < array_length(playerList); i++){ // skip host
 				player_list_sync(playerList[i][INDEX.ID])
 			}
-			
 		break
 		case PACKET.PLAYER_LEAVE:
 			show_debug_message("[Server] Player Leave")
@@ -82,5 +82,5 @@ while(steam_net_packet_receive()) {
 		break
 		default: show_debug_message("Unknown Packet")
 	}
-	buffer_delete(_inbuf)
 }
+buffer_delete(_inbuf)

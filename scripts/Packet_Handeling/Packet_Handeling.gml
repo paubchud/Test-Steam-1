@@ -2,9 +2,9 @@
 function player_list_sync(steam_id){
 	var _b = buffer_create(1, buffer_grow, 1)
 	buffer_write(_b, buffer_u8, PACKET.PLAYER_LIST_SYNC)
-	buffer_write(_b, buffer_string, playerList)
+	buffer_write(_b, buffer_string, global.client.playerList)
 	steam_net_packet_send(steam_id, _b)
-	show_debug_message("[Spacket] Pos Sent")
+	show_debug_message("[Spacket] List Sent")
 	buffer_delete(_b)
 }
 
@@ -33,7 +33,7 @@ function request_data(newID){
 //Client obj[Create]: On joining, send host player data
 function send_player_data(data){
 	var _b = buffer_create(3, buffer_fixed, 1)
-	buffer_write(_b, buffer_u8, PACKET.PLAYER_JOIN)
+	buffer_write(_b, buffer_u8, PACKET.UPDATE_DATA)
 	buffer_write(_b, buffer_u16, data)
 	steam_net_packet_send(steam_lobby_get_owner_id(), _b)
 	show_debug_message("[Cpacket] Data Sent")
@@ -55,7 +55,7 @@ function update_player_pos_to_server(xPos, yPos, IDsender){
 
 
 enum PACKET {
-	PLAYER_JOIN, PLAYER_LEAVE, REQUEST_DATA,
+	UPDATE_DATA, PLAYER_LEAVE, REQUEST_DATA,
 	MOVEMENT_UPDATE_SERVER,	MOVEMENT_UPDATE_CLIENT,
 	PLAYER_LIST_SYNC
 }

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Helpful_Scripts",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Helpful_Scripts",
+  "parent":{
+    "name":"Game",
+    "path":"folders/Game.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
