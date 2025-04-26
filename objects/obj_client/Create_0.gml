@@ -21,7 +21,6 @@ if(isHost)
 else
 {
 	show_debug_message("You are not the Host")
-	send_player_data(data)
 }
 
 // Create everyone before you
