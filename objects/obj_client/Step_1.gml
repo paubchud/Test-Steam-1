@@ -36,7 +36,7 @@ while(steam_net_packet_receive()) {
 					player.playerID = playerData[INDEX.ID]
 					player.is_local = ((playerData[INDEX.ID] == global.my_id) ? true:false)
 					player.playerName = playerData[INDEX.NAME]
-					show_debug_message("Player Created; ID: "+ player.playerID + ", Local: " + player.is_local)
+					show_debug_message("Player Created; ID: "+ string(player.playerID) + ", Local: " + string(player.is_local))
 				}
 			}
 		break
