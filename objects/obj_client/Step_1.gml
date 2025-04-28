@@ -21,6 +21,7 @@ while(steam_net_packet_receive()) {
 			// Make newly added character
 			if(steam_lobby_member_change_entered){
 				show_debug_message("Create character")
+				print_player_list()
 				var isNew = (playerList[array_length(playerList)][INDEX.ID] == global.my_id); // If you just joined
 				show_debug_message("Am I new: "+ isNew)
 				
@@ -50,7 +51,7 @@ while(steam_net_packet_receive()) {
 			var xPos = buffer_read(_inbuf, buffer_u16)
 			var yPos = buffer_read(_inbuf, buffer_u16)
 			var IDsender = buffer_read(_inbuf, buffer_u64)
-			for(i = 0; i <= array_length(playerList); i++) {
+			for(var i = 0; i <= array_length(playerList); i++) {
 				if (IDsender == playerList[i][INDEX.ID]){
 					// Change x and y of that character
 					show_debug_message("[Client] X: "+ xPos)
@@ -68,13 +69,13 @@ while(steam_net_packet_receive()) {
 		*/
 		case PACKET.UPDATE_DATA:
 			show_debug_message("[Server] Updating Player Data")
-			print_player_list()
 			// Add data to player
 			playerList[array_length(playerList)-1][INDEX.DATA] = buffer_read(_inbuf, buffer_u16)
 			
+			//print_player_list() // player list checks out so far with 2 players
 			
 			// Send full list to others
-			for(var i = 0; i < array_length(playerList); i++){ // skip host
+			for(var i = 0; i < array_length(playerList); i++){
 				player_list_sync(playerList[i][INDEX.ID])
 			}
 		break
@@ -91,7 +92,7 @@ while(steam_net_packet_receive()) {
 			var yPos = buffer_read(_inbuf, buffer_u16)
 			var IDsender = buffer_read(_inbuf, buffer_u64)
 			// Loop through players to update movement
-			for(i = 0; i <= array_length(playerList); i++) {
+			for(var i = 0; i <= array_length(playerList); i++) {
 				// Possiblyu use index variable instead of ID search idk
 				update_player_pos_to_clients(xPos,yPos,IDsender, playerList[i][INDEX.ID]) // Possibly make index variable
 			}
