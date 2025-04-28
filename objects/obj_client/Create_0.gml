@@ -1,5 +1,5 @@
 // Variables (Default)
-isHost = steam_lobby_is_owner() ? 1:0
+isHost = steam_lobby_is_owner() ? true:false
 playerList = []
 data = 0
 playerToBeAdded = false;

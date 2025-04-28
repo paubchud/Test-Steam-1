@@ -1,6 +1,12 @@
 // Initiate Server Variables
 
 // Player list will store: Name, ID, Spawn x, Spawn y, Data String (later)
+var player = instance_create_layer(16, 16, "Instances", obj_player)
+player.playerID = global.my_id
+player.is_local = true
+player.playerName = global.my_name
+					
+
 //show_debug_message("[S obj] Add host to player list")
 global.client.playerList[0] = [global.my_name, global.my_id, 0, 0, 0]
 print_player_list()

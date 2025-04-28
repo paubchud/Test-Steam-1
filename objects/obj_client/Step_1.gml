@@ -21,7 +21,7 @@ while(steam_net_packet_receive()) {
 			// Make newly added character
 			if(steam_lobby_member_change_entered){
 				show_debug_message("Create character")
-				var isNew = (playerList[array_length(playerList)-1][INDEX.ID] == global.my_id); // If you just joined
+				var isNew = (playerList[array_length(playerList)][INDEX.ID] == global.my_id); // If you just joined
 				show_debug_message("Am I new: "+ isNew)
 				
 				// Joinee makes whole list, others make just new
@@ -35,6 +35,7 @@ while(steam_net_packet_receive()) {
 					var player = instance_create_layer(posx, posy, "Instances", obj_player)
 					player.playerID = playerData[INDEX.ID]
 					player.is_local = ((playerData[INDEX.ID] == global.my_id) ? true:false)
+					player.playerName = playerData[INDEX.NAME]
 					show_debug_message("Player Created; ID: "+ player.playerID + ", Local: " + player.is_local)
 				}
 			}
