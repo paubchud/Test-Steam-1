@@ -9,7 +9,9 @@ switch(steam_async)
 		if (async_load[? "change_flags"] & steam_lobby_member_change_entered)
 		{
 			show_debug_message("[Server Async] Player Joined")
-			array_push(global.client.playerList, [userName, userID, 0, 0, 0])
+			array_push(global.client.playerList, [userName, userID, 
+			array_length(global.client.playerList)*16, 16, 0])
+			
 			print_player_list()
 			request_data(userID)
 		}
