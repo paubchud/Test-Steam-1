@@ -54,8 +54,8 @@ while(steam_net_packet_receive()) {
 			for(var i = 0; i <= array_length(playerList); i++) {
 				if (IDsender == playerList[i][INDEX.ID]){
 					// Change x and y of that character
-					show_debug_message("[Client] X: "+ xPos)
-					show_debug_message("[Client] Y: "+ yPos)
+					show_debug_message("[Client] X: "+ string(xPos))
+					show_debug_message("[Client] Y: "+ string(yPos))
 				}
 			}
 		break
