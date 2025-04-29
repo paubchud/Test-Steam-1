@@ -90,7 +90,7 @@ while(steam_net_packet_receive()) {
 			show_debug_message("[Server] POS Update")
 			var xPos = buffer_read(_inbuf, buffer_u16)
 			var yPos = buffer_read(_inbuf, buffer_u16)
-			var IDsender = buffer_read(_inbuf, buffer_u64)
+			var IDsender = real(buffer_read(_inbuf, buffer_string))
 			// Loop through players to update movement
 			for(var i = 0; i < array_length(playerList); i++) {
 				// Possibly use index variable instead of ID search idk
