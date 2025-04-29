@@ -23,7 +23,7 @@ while(steam_net_packet_receive()) {
 			if(steam_lobby_member_change_entered){
 				show_debug_message("Create character")
 				var isNew = (playerList[array_length(playerList)-1][INDEX.ID] == global.my_id); // If you just joined
-				show_debug_message("Am I new: "+ isNew)
+				show_debug_message("Am I new: "+ string(isNew))
 				
 				// Joinee makes whole list, others make just new
 				for(var i = (isNew ? 0:(array_length(playerList)-1));
@@ -92,7 +92,7 @@ while(steam_net_packet_receive()) {
 			var yPos = buffer_read(_inbuf, buffer_u16)
 			var IDsender = buffer_read(_inbuf, buffer_u64)
 			// Loop through players to update movement
-			for(var i = 0; i <= array_length(playerList); i++) {
+			for(var i = 0; i < array_length(playerList); i++) {
 				// Possiblyu use index variable instead of ID search idk
 				update_player_pos_to_clients(xPos,yPos,IDsender, playerList[i][INDEX.ID]) // Possibly make index variable
 			}
