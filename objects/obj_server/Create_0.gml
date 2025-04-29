@@ -8,7 +8,7 @@ player.playerName = global.my_name
 					
 
 //show_debug_message("[S obj] Add host to player list")
-global.client.playerList[0] = [global.my_name, global.my_id, 0, 0, 0]
+global.client.playerList[0] = [global.my_name, global.my_id, 16, 16, 0]
 print_player_list()
 //array_push(playerList, [global.my_name, global.my_id, 0, 0, 0])
 

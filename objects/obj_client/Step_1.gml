@@ -17,13 +17,12 @@ while(steam_net_packet_receive()) {
 			show_debug_message("[Client] PL Sync")
 			// Update playerList
 			var crunchList = buffer_read(_inbuf, buffer_string)
-			playerList = json_decode(crunchList)
+			playerList = json_parse(crunchList)
 			
 			// Make newly added character
 			if(steam_lobby_member_change_entered){
 				show_debug_message("Create character")
-				print_player_list()
-				var isNew = (playerList[array_length(playerList)][INDEX.ID] == global.my_id); // If you just joined
+				var isNew = (playerList[array_length(playerList)-1][INDEX.ID] == global.my_id); // If you just joined
 				show_debug_message("Am I new: "+ isNew)
 				
 				// Joinee makes whole list, others make just new

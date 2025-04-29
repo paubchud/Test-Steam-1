@@ -10,7 +10,7 @@ switch(steam_async)
 		{
 			show_debug_message("[Server Async] Player Joined")
 			array_push(global.client.playerList, [userName, userID, 
-			array_length(global.client.playerList)*16, 16, 0])
+			array_length(global.client.playerList)*16+16, 16, 0])
 			
 			print_player_list()
 			request_data(userID)
