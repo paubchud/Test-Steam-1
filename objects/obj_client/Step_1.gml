@@ -50,8 +50,8 @@ while(steam_net_packet_receive()) {
 			// Receive movement from another player via server
 			var xPos = buffer_read(_inbuf, buffer_u16)
 			var yPos = buffer_read(_inbuf, buffer_u16)
-			var IDsender = buffer_read(_inbuf, buffer_u64)
-			for(var i = 0; i <= array_length(playerList); i++) {
+			var IDsender = real(buffer_read(_inbuf, buffer_string))
+			for(var i = 0; i < array_length(playerList); i++) {
 				if (IDsender == playerList[i][INDEX.ID]){
 					// Change x and y of that character
 					show_debug_message("[Client] X: "+ string(xPos))
@@ -93,8 +93,11 @@ while(steam_net_packet_receive()) {
 			var IDsender = buffer_read(_inbuf, buffer_u64)
 			// Loop through players to update movement
 			for(var i = 0; i < array_length(playerList); i++) {
-				// Possiblyu use index variable instead of ID search idk
-				update_player_pos_to_clients(xPos,yPos,IDsender, playerList[i][INDEX.ID]) // Possibly make index variable
+				// Possibly use index variable instead of ID search idk
+				if (playerList[i][INDEX.ID] != IDsender){ // Exclude sender?
+					update_player_pos_to_clients(xPos,yPos,IDsender,
+					playerList[i][INDEX.ID]) // Possibly make index variable
+				}
 			}
 		break
 		default: show_debug_message("Unknown Packet")
