@@ -10,12 +10,12 @@ function player_list_sync(steam_id){
 
 //Client obj[Begin Step]: When recived, loop through players to update all
 // X position, Y position, ID of player moving, ID of player receiving packet
-function update_player_pos_to_clients(xPos, yPos, IDsender, IDreceiver){
-	var _b = buffer_create(5+string_byte_length(string(IDsender)), buffer_fixed, 1)
-	buffer_write(_b, buffer_u8, PACKET.MOVEMENT_UPDATE_SERVER)
+function update_player_pos_to_clients(xPos, yPos, senderIndex, IDreceiver){
+	var _b = buffer_create(6, buffer_fixed, 1)
+	buffer_write(_b, buffer_u8, PACKET.MOVEMENT_UPDATE_CLIENT)
+	buffer_write(_b, buffer_u8, senderIndex)
 	buffer_write(_b, buffer_u16, xPos)
 	buffer_write(_b, buffer_u16, yPos)
-	buffer_write(_b, buffer_string, string(IDsender))
 	steam_net_packet_send(IDreceiver, _b)
 	show_debug_message("[Spacket] Pos Sent")
 	buffer_delete(_b)
@@ -42,12 +42,12 @@ function send_player_data(data){
 
 //Client obj[Step]: On movement, update player position
 // X position, Y position, ID of player moving
-function update_player_pos_to_server(xPos, yPos, IDsender){
-	var _b = buffer_create(5+string_byte_length(string(IDsender)), buffer_fixed, 1)
+function update_player_pos_to_server(xPos, yPos, senderIndex){
+	var _b = buffer_create(6, buffer_fixed, 1)
 	buffer_write(_b, buffer_u8, PACKET.MOVEMENT_UPDATE_CLIENT)
+	buffer_write(_b, buffer_u8, senderIndex)
 	buffer_write(_b, buffer_u16, xPos)
 	buffer_write(_b, buffer_u16, yPos)
-	buffer_write(_b, buffer_string, string(IDsender))
 	steam_net_packet_send(steam_lobby_get_owner_id(), _b)
 	show_debug_message("[Cpacket] Pos Sent")
 	buffer_delete(_b)

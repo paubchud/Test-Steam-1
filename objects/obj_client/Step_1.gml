@@ -37,6 +37,7 @@ while(steam_net_packet_receive()) {
 					player.playerID = playerData[INDEX.ID]
 					player.is_local = ((playerData[INDEX.ID] == global.my_id) ? true:false)
 					player.playerName = playerData[INDEX.NAME]
+					player.index = i
 					show_debug_message("Player Created; ID: "+ string(player.playerID) + ", Local: " + string(player.is_local))
 				}
 			}
@@ -48,16 +49,18 @@ while(steam_net_packet_receive()) {
 		case PACKET.MOVEMENT_UPDATE_SERVER: // SENT FROM SERVER
 			show_debug_message("[Server] POS Update")
 			// Receive movement from another player via server
+			var index = buffer_read(_inbuf, buffer_u8)
 			var xPos = buffer_read(_inbuf, buffer_u16)
 			var yPos = buffer_read(_inbuf, buffer_u16)
-			var IDsender = real(buffer_read(_inbuf, buffer_string))
-			for(var i = 0; i < array_length(playerList); i++) {
-				if (IDsender == playerList[i][INDEX.ID]){
-					// Change x and y of that character
-					show_debug_message("[Client] X: "+ string(xPos))
-					show_debug_message("[Client] Y: "+ string(yPos))
+			// Change x and y of that character (need to refer to player obj in list)
+			with (obj_player) {
+				if (self.index == index){
+					self.x += xPos
+					self.y += yPos
 				}
 			}
+			//show_debug_message("[Client] X: "+ string(xPos))
+			//show_debug_message("[Client] Y: "+ string(yPos))
 		break
 		
 		
@@ -88,14 +91,13 @@ while(steam_net_packet_receive()) {
 		break
 		case PACKET.MOVEMENT_UPDATE_CLIENT: // SENT FROM CLIENT
 			show_debug_message("[Server] POS Update")
+			var index = buffer_read(_inbuf, buffer_u8)
 			var xPos = buffer_read(_inbuf, buffer_u16)
 			var yPos = buffer_read(_inbuf, buffer_u16)
-			var IDsender = real(buffer_read(_inbuf, buffer_string))
 			// Loop through players to update movement
 			for(var i = 0; i < array_length(playerList); i++) {
-				// Possibly use index variable instead of ID search idk
-				if (playerList[i][INDEX.ID] != IDsender){ // Exclude sender?
-					update_player_pos_to_clients(xPos,yPos,IDsender,
+				if (i != index){
+					update_player_pos_to_clients(xPos,yPos,index,
 					playerList[i][INDEX.ID]) // Possibly make index variable
 				}
 			}

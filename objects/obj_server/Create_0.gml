@@ -5,6 +5,7 @@ var player = instance_create_layer(16, 16, "Instances", obj_player)
 player.playerID = global.my_id
 player.is_local = true
 player.playerName = global.my_name
+player.index = 0; // Host
 					
 
 //show_debug_message("[S obj] Add host to player list")
