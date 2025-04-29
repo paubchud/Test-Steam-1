@@ -16,7 +16,8 @@ while(steam_net_packet_receive()) {
 		case PACKET.PLAYER_LIST_SYNC:
 			show_debug_message("[Client] PL Sync")
 			// Update playerList
-			playerList = buffer_read(_inbuf, buffer_string)
+			var crunchList = buffer_read(_inbuf, buffer_string)
+			playerList = json_decode(crunchList)
 			
 			// Make newly added character
 			if(steam_lobby_member_change_entered){

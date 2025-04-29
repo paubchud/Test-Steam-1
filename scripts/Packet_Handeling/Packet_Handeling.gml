@@ -2,8 +2,7 @@
 function player_list_sync(steam_id){
 	var _b = buffer_create(1, buffer_grow, 1)
 	buffer_write(_b, buffer_u8, PACKET.PLAYER_LIST_SYNC)
-	show_debug_message("List not sending properly!!!") // Need to restructure to send player at a time
-	buffer_write(_b, buffer_string, global.client.playerList) // List isnt sending!!!!!!!!!!!!
+	buffer_write(_b, buffer_string, json_stringify(global.client.playerList))
 	steam_net_packet_send(steam_id, _b)
 	show_debug_message("[Spacket] List Sent to: " +string(steam_id))
 	buffer_delete(_b)
