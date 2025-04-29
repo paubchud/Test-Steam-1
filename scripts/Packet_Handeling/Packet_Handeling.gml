@@ -15,7 +15,7 @@ function update_player_pos_to_clients(xPos, yPos, IDsender, IDreceiver){
 	buffer_write(_b, buffer_u8, PACKET.MOVEMENT_UPDATE_SERVER)
 	buffer_write(_b, buffer_u16, xPos)
 	buffer_write(_b, buffer_u16, yPos)
-	buffer_write(_b, buffer_u16, IDsender)
+	buffer_write(_b, buffer_u64, IDsender)
 	steam_net_packet_send(IDreceiver, _b)
 	show_debug_message("[Spacket] Pos Sent")
 	buffer_delete(_b)
