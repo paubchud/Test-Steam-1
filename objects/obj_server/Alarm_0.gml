@@ -1,7 +1,4 @@
 /// @description Handle Server Packet Events
-var _sender = steam_net_packet_get_sender_id()
-steam_net_packet_get_data(inbuf)
-buffer_seek(inbuf, buffer_seek_start, 0)
 var _type = buffer_read(inbuf, buffer_u8)
 show_debug_message("[Server] type: "+string(_type))
 	
