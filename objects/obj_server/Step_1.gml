@@ -16,8 +16,6 @@ while(steam_net_packet_receive(1)) {
 			// Add data to player
 			playerList[array_length(playerList)-1][INDEX.DATA] = buffer_read(inbuf, buffer_u16)
 			
-			//print_player_list() // player list checks out so far with 2 players
-			
 			// Send full list to others
 			for(var i = 0; i < array_length(playerList); i++){
 				player_list_sync(playerList[i][INDEX.ID])
@@ -43,6 +41,6 @@ while(steam_net_packet_receive(1)) {
 				}
 			}
 		break
-		default: global.client.inbuf = inbuf
+		default: //global.client.inbuf = inbuf
 	}
 }
