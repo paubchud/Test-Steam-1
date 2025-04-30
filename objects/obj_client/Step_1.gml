@@ -1,10 +1,9 @@
 ///@description Packet Listening
-_inbuf = buffer_create(1, buffer_grow, 1)
 while(steam_net_packet_receive()) {
 	var _sender = steam_net_packet_get_sender_id()
-	steam_net_packet_get_data(_inbuf)
-	buffer_seek(_inbuf, buffer_seek_start, 0)
-	var _type = buffer_read(_inbuf, buffer_u8)
+	steam_net_packet_get_data(inbuf)
+	buffer_seek(inbuf, buffer_seek_start, 0)
+	var _type = buffer_read(inbuf, buffer_u8)
 	show_debug_message("[Client] type: "+string(_type))
 	
 	switch _type {
@@ -16,7 +15,7 @@ while(steam_net_packet_receive()) {
 		case PACKET.PLAYER_LIST_SYNC:
 			show_debug_message("[Client] PL Sync")
 			// Update playerList
-			var crunchList = buffer_read(_inbuf, buffer_string)
+			var crunchList = buffer_read(inbuf, buffer_string)
 			playerList = json_parse(crunchList)
 			
 			// Make newly added character
@@ -49,9 +48,9 @@ while(steam_net_packet_receive()) {
 		case PACKET.MOVEMENT_UPDATE_SERVER: // SENT FROM SERVER
 			show_debug_message("[Server] POS Update")
 			// Receive movement from another player via server
-			var index = buffer_read(_inbuf, buffer_u8)
-			var xPos = buffer_read(_inbuf, buffer_u16)
-			var yPos = buffer_read(_inbuf, buffer_u16)
+			var index = buffer_read(inbuf, buffer_u8)
+			var xPos = buffer_read(inbuf, buffer_u16)
+			var yPos = buffer_read(inbuf, buffer_u16)
 			// Change x and y of that character (need to refer to player obj in list)
 			with (obj_player) {
 				if (self.index == index){

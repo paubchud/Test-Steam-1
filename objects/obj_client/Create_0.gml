@@ -1,10 +1,9 @@
 // Variables (Default)
 isHost = steam_lobby_is_owner() ? true:false
-playerList = []
+playerList = isHost ? global.server.playerList:[]
 data = 0
 playerToBeAdded = false;
 spawnMult = 16
-var _inbuf = buffer_create(1, buffer_grow, 1)
 enum INDEX{
 	NAME = 0,
 	ID = 1,
@@ -12,18 +11,18 @@ enum INDEX{
 	YSPAWN = 3,
 	DATA = 4
 }
+inbuf = buffer_create(1, buffer_grow, 1)
 
 // initialize host
-if(isHost)
-{
-	show_debug_message("You are the Host")
-}
-else
-{
-	show_debug_message("You are not the Host")
-}
+//if(isHost)
+//{
+//	show_debug_message("You are the Host")
+//}
+//else
+//{
+//	show_debug_message("You are not the Host")
+//}
 
-// Create everyone before you
 
 
 // Create yourself
