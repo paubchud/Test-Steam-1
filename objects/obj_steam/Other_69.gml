@@ -32,6 +32,7 @@ switch(steam_async){
 		// move to game room
 		room_goto(2)
 		
+		
 		//show_debug_message("[debug] Lobby ID: "+string(steam_lobby_get_lobby_id()))
 		//show_debug_message("[debug] Is Host?: "+string(steam_lobby_is_owner()))
 		//show_debug_message("[debug] Is Host?: "+string(clientID.isHost))
@@ -48,9 +49,6 @@ switch(steam_async){
 	
 	// Lobby List Requested
 	case "lobby_list":
-	
-	
-	
 	
 		// Debug Functions
 		for (var i = 0; i < steam_lobby_list_get_count(); i++) {

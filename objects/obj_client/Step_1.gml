@@ -1,5 +1,5 @@
 ///@description Packet Listening
-while(steam_net_packet_receive(0)) {
+while(steam_net_packet_receive()){
 	var _sender = steam_net_packet_get_sender_id()
 	steam_net_packet_get_data(inbuf)
 	buffer_seek(inbuf, buffer_seek_start, 0)
@@ -46,7 +46,7 @@ while(steam_net_packet_receive(0)) {
 			send_player_data(data)
 		break
 		case PACKET.MOVEMENT_UPDATE_SERVER: // SENT FROM SERVER
-			show_debug_message("[Server] POS Update")
+			show_debug_message("[Client] POS Update")
 			// Receive movement from another player via server
 			var index = buffer_read(inbuf, buffer_u8)
 			var xPos = buffer_read(inbuf, buffer_u16)
@@ -61,6 +61,11 @@ while(steam_net_packet_receive(0)) {
 			//show_debug_message("[Client] X: "+ string(xPos))
 			//show_debug_message("[Client] Y: "+ string(yPos))
 		break
-		default: show_debug_message("Unknown CPacket")
+		default: 
+			if isHost{
+				global.server.inbuf = inbuf
+				global.server.alarm[0] = 0}
+			else{
+				show_debug_message("Server/Unknown Packet")}
 	}
 }
