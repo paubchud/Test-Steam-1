@@ -1,4 +1,4 @@
-//Client obj[Begin Step]: send updated player list when a player joins
+//Client obj [Begin Step]: send updated player list when a player joins
 function player_list_sync(steam_id){
 	var _b = buffer_create(1, buffer_grow, 1)
 	buffer_write(_b, buffer_u8, PACKET.PLAYER_LIST_SYNC)
@@ -8,7 +8,7 @@ function player_list_sync(steam_id){
 	buffer_delete(_b)
 }
 
-//Client obj[Begin Step]: When recived, loop through players to update all
+//@self obj_server [Begin Step]: When recived, loop through players to update all
 // X position, Y position, ID of player moving, ID of player receiving packet
 function update_player_pos_to_clients(xPos, yPos, senderIndex, IDreceiver){
 	var _b = buffer_create(6, buffer_fixed, 1)
@@ -21,7 +21,7 @@ function update_player_pos_to_clients(xPos, yPos, senderIndex, IDreceiver){
 	buffer_delete(_b)
 }
 
-//Server obj[Async]: Request data from new player
+///@self obj_server [Async]: Request data from new player
 function request_data(newID){
 		var _b = buffer_create(1, buffer_fixed, 1)
 	buffer_write(_b, buffer_u8, PACKET.REQUEST_DATA)
