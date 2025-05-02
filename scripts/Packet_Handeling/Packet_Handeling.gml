@@ -39,7 +39,7 @@ function send_player_data(data){
 	var _b = buffer_create(3, buffer_fixed, 1)
 	buffer_write(_b, buffer_u8, PACKET.UPDATE_DATA)
 	buffer_write(_b, buffer_u16, data)
-	steam_net_packet_send(steam_lobby_get_owner_id(), _b,2)
+	steam_net_packet_send(steam_lobby_get_owner_id(), _b)
 	show_debug_message("[Cpacket] Data Sent")
 	buffer_delete(_b)
 }
@@ -53,7 +53,7 @@ function update_player_pos_to_server(xPos, yPos, senderIndex){
 	buffer_write(_b, buffer_u8, senderIndex)
 	buffer_write(_b, buffer_u16, xPos)
 	buffer_write(_b, buffer_u16, yPos)
-	steam_net_packet_send(steam_lobby_get_owner_id(), _b,2)
+	steam_net_packet_send(steam_lobby_get_owner_id(), _b)
 	show_debug_message("[Cpacket] Pos Sent")
 	buffer_delete(_b)
 }

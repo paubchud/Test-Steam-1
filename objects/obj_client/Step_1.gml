@@ -2,7 +2,6 @@
 while(steam_net_packet_receive()){
 	var _sender = steam_net_packet_get_sender_id()
 	steam_net_packet_get_data(inbuf)
-	var _inbuf = inbuf
 	buffer_seek(inbuf, buffer_seek_start, 0)
 	var _type = buffer_read(inbuf, buffer_u8)
 	show_debug_message("[Client] type: "+string(_type))
@@ -65,8 +64,8 @@ while(steam_net_packet_receive()){
 		default: 
 			if isHost{
 				show_debug_message("Sending to Server")
-				global.server.inbuf = _inbuf
-				global.server.alarm[0] = 0}
+				global.server.inbuf = inbuf
+				global.server.alarm[0] = 1}
 			else{
 				show_debug_message("Server/Unknown Packet")}
 	}

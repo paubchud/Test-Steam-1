@@ -1,4 +1,6 @@
-/// @description Handle Server Packet Events
+/// @description Handle Server Packet Event
+steam_net_packet_get_data(inbuf)
+buffer_seek(inbuf, buffer_seek_start, 0)
 var _type = buffer_read(inbuf, buffer_u8)
 show_debug_message("[Server] type: "+string(_type))
 	
@@ -11,7 +13,7 @@ switch _type {
 	case PACKET.UPDATE_DATA:
 		show_debug_message("[Server] Updating Player Data")
 		// Add data to player
-		playerList[array_length(playerList)-1][INDEX.DATA] = buffer_read(inbuf, buffer_u16)
+		playerList[array_length(playerList)-1][INDEX.DATA] = buffer_read(inbuf, buffer_u8)
 			
 		// Send full list to others
 		for(var i = 0; i < array_length(playerList); i++){
