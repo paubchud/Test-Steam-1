@@ -54,8 +54,8 @@ while(steam_net_packet_receive()){
 			// Change x and y of that character (need to refer to player obj in list)
 			with (obj_player) {
 				if (self.index == index){
-					self.x += xPos
-					self.y += yPos
+					self.x = xPos
+					self.y = yPos
 				}
 			}
 			//show_debug_message("[Client] X: "+ string(xPos))
