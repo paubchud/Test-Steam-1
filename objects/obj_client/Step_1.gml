@@ -4,7 +4,7 @@ while(steam_net_packet_receive()){
 	steam_net_packet_get_data(inbuf)
 	buffer_seek(inbuf, buffer_seek_start, 0)
 	var _type = buffer_read(inbuf, buffer_u8)
-	show_debug_message("[Client] type: "+string(_type))
+	show_debug_message("type: "+string(_type))
 	
 	switch _type {
 		/* Client Packets Client Receives
@@ -34,6 +34,7 @@ while(steam_net_packet_receive()){
 					var posy = playerData[INDEX.YSPAWN]
 					var player = instance_create_layer(posx, posy, "Instances", obj_player)
 					player.playerID = playerData[INDEX.ID]
+					if (player.playerID == global.my_id) selfPlayer = player
 					player.is_local = ((playerData[INDEX.ID] == global.my_id) ? true:false)
 					player.playerName = playerData[INDEX.NAME]
 					player.index = i
@@ -46,7 +47,7 @@ while(steam_net_packet_receive()){
 			send_player_data(data)
 		break
 		case PACKET.MOVEMENT_UPDATE_CLIENT: // SENT FROM SERVER
-			show_debug_message("[Client] POS Update")
+			//show_debug_message("[Client] POS Update")
 			// Receive movement from another player via server
 			var index = buffer_read(inbuf, buffer_u8)
 			var xPos = buffer_read(inbuf, buffer_u16)
@@ -63,7 +64,7 @@ while(steam_net_packet_receive()){
 		break
 		default: 
 			if isHost{
-				show_debug_message("Sending to Server")
+				//show_debug_message("Sending to Server")
 				global.server.inbuf = inbuf
 				global.server.alarm[0] = 1}
 			else{

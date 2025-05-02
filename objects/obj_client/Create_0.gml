@@ -1,6 +1,7 @@
 // Variables (Default)
 isHost = steam_lobby_is_owner() ? true:false
 playerList = isHost ? global.server.playerList:[]
+selfPlayer = isHost ? global.server.playerList[0]:undefined
 data = 0
 playerToBeAdded = false;
 spawnMult = 16

@@ -1,0 +1,20 @@
+{
+  "$GMPath":"",
+  "%Name":"path_default2",
+  "closed":false,
+  "kind":0,
+  "name":"path_default2",
+  "parent":{
+    "name":"Game",
+    "path":"folders/Game.yy",
+  },
+  "points":[
+    {"speed":100.0,"x":536.0,"y":144.0,},
+    {"speed":100.0,"x":536.0,"y":360.0,},
+    {"speed":100.0,"x":840.0,"y":360.0,},
+    {"speed":100.0,"x":840.0,"y":88.0,},
+  ],
+  "precision":4,
+  "resourceType":"GMPath",
+  "resourceVersion":"2.0",
+}

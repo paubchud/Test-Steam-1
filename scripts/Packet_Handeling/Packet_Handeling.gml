@@ -5,7 +5,7 @@ function player_list_sync(steam_id){
 	buffer_write(_b, buffer_u8, PACKET.PLAYER_LIST_SYNC)
 	buffer_write(_b, buffer_string, json_stringify(playerList))
 	steam_net_packet_send(steam_id, _b)
-	show_debug_message("[Spacket] List Sent to: " +string(steam_id))
+	//show_debug_message("[Spacket] List Sent to: " +string(steam_id))
 	buffer_delete(_b)
 }
 
@@ -19,7 +19,7 @@ function update_player_pos_to_clients(xPos, yPos, senderIndex, IDreceiver){
 	buffer_write(_b, buffer_u16, xPos)
 	buffer_write(_b, buffer_u16, yPos)
 	steam_net_packet_send(IDreceiver, _b)
-	show_debug_message("[Spacket] Pos Sent")
+	//show_debug_message("[Spacket] Pos Sent")
 	buffer_delete(_b)
 }
 
@@ -29,7 +29,7 @@ function request_data(newID){
 		var _b = buffer_create(1, buffer_fixed, 1)
 	buffer_write(_b, buffer_u8, PACKET.REQUEST_DATA)
 	steam_net_packet_send(newID, _b)
-	show_debug_message("[Spacket] Data Requested")
+	//show_debug_message("[Spacket] Data Requested")
 	buffer_delete(_b)
 }
 
@@ -40,7 +40,7 @@ function send_player_data(data){
 	buffer_write(_b, buffer_u8, PACKET.UPDATE_DATA)
 	buffer_write(_b, buffer_u16, data)
 	steam_net_packet_send(steam_lobby_get_owner_id(), _b)
-	show_debug_message("[Cpacket] Data Sent")
+	//show_debug_message("[Cpacket] Data Sent")
 	buffer_delete(_b)
 }
 
@@ -54,7 +54,7 @@ function update_player_pos_to_server(xPos, yPos, senderIndex){
 	buffer_write(_b, buffer_u16, xPos)
 	buffer_write(_b, buffer_u16, yPos)
 	steam_net_packet_send(steam_lobby_get_owner_id(), _b)
-	show_debug_message("[Cpacket] Pos Sent")
+	//show_debug_message("[Cpacket] Pos Sent")
 	buffer_delete(_b)
 }
 

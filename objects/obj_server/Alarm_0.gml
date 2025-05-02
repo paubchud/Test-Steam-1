@@ -2,7 +2,7 @@
 steam_net_packet_get_data(inbuf)
 buffer_seek(inbuf, buffer_seek_start, 0)
 var _type = buffer_read(inbuf, buffer_u8)
-show_debug_message("[Server] type: "+string(_type))
+//show_debug_message("[Server] type: "+string(_type))
 	
 switch _type {
 /* Server Packets: Server/Host Receives
@@ -11,7 +11,7 @@ switch _type {
 	MOVEMENT_UPDATE_SERVER: 
 	*/
 	case PACKET.UPDATE_DATA:
-		show_debug_message("[Server] Updating Player Data")
+		//show_debug_message("[Server] Updating Player Data")
 		// Add data to player
 		playerList[array_length(playerList)-1][INDEX.DATA] = buffer_read(inbuf, buffer_u16)
 			

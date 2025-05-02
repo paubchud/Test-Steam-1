@@ -1,15 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"obj_game",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"obj_tower",
+  "eventList":[],
   "managed":true,
-  "name":"obj_game",
+  "name":"obj_tower",
   "overriddenProperties":[],
   "parent":{
-    "name":"Game",
-    "path":"folders/Game.yy",
+    "name":"Towers",
+    "path":"folders/Game/Towers.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -30,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_game",
-    "path":"sprites/spr_game/spr_game.yy",
+    "name":"spr_tower",
+    "path":"sprites/spr_tower/spr_tower.yy",
   },
   "spriteMaskId":null,
   "visible":true,
