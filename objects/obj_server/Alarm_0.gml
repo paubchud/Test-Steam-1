@@ -13,7 +13,7 @@ switch _type {
 	case PACKET.UPDATE_DATA:
 		show_debug_message("[Server] Updating Player Data")
 		// Add data to player
-		playerList[array_length(playerList)-1][INDEX.DATA] = buffer_read(inbuf, buffer_u8)
+		playerList[array_length(playerList)-1][INDEX.DATA] = buffer_read(inbuf, buffer_u16)
 			
 		// Send full list to others
 		for(var i = 0; i < array_length(playerList); i++){
@@ -27,7 +27,7 @@ switch _type {
 		// Send new list to others
 		
 	break
-	case PACKET.MOVEMENT_UPDATE_CLIENT: // SENT FROM CLIENT
+	case PACKET.MOVEMENT_UPDATE_SERVER: // SENT FROM CLIENT
 		show_debug_message("[Server] POS Update")
 		var index = buffer_read(inbuf, buffer_u8)
 		var xPos = buffer_read(inbuf, buffer_u16)

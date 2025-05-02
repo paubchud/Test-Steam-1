@@ -45,7 +45,7 @@ while(steam_net_packet_receive()){
 			show_debug_message("[Client] Sending Data As Requested")
 			send_player_data(data)
 		break
-		case PACKET.MOVEMENT_UPDATE_SERVER: // SENT FROM SERVER
+		case PACKET.MOVEMENT_UPDATE_CLIENT: // SENT FROM SERVER
 			show_debug_message("[Client] POS Update")
 			// Receive movement from another player via server
 			var index = buffer_read(inbuf, buffer_u8)

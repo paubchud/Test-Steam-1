@@ -49,7 +49,7 @@ function send_player_data(data){
 // X position, Y position, ID of player moving
 function update_player_pos_to_server(xPos, yPos, senderIndex){
 	var _b = buffer_create(6, buffer_fixed, 1)
-	buffer_write(_b, buffer_u8, PACKET.MOVEMENT_UPDATE_CLIENT)
+	buffer_write(_b, buffer_u8, PACKET.MOVEMENT_UPDATE_SERVER)
 	buffer_write(_b, buffer_u8, senderIndex)
 	buffer_write(_b, buffer_u16, xPos)
 	buffer_write(_b, buffer_u16, yPos)
@@ -62,9 +62,9 @@ function update_player_pos_to_server(xPos, yPos, senderIndex){
 enum PACKET {
 	UPDATE_DATA=1,
 	PLAYER_LEAVE=2,
-	MOVEMENT_UPDATE_CLIENT=3, 
+	MOVEMENT_UPDATE_SERVER=3,
 	
 	REQUEST_DATA=11,
-	MOVEMENT_UPDATE_SERVER=12,	
+	MOVEMENT_UPDATE_CLIENT=12,
 	PLAYER_LIST_SYNC=13
 }
