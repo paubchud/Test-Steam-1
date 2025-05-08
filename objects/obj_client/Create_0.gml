@@ -1,11 +1,11 @@
 // Variables (Default)
-isHost = steam_lobby_is_owner() ? true:false
-playerList = isHost ? global.server.playerList:[]
-selfPlayer = isHost ? global.server.playerList[0]:undefined
+isHost = steam_lobby_is_owner()
+playerList = isHost ? global.server.playerList: []
+selfPlayer = isHost ? instance_find(obj_player, 0): undefined
 data = 0
 playerToBeAdded = false;
 spawnMult = 16
-enum INDEX{
+enum INDEX {
 	NAME = 0,
 	ID = 1,
 	XSPAWN = 2,

@@ -36,5 +36,5 @@
     "path":"sprites/spr_server/spr_server.yy",
   },
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }

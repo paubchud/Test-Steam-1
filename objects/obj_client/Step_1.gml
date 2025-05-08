@@ -34,9 +34,10 @@ while(steam_net_packet_receive()){
 					var posy = playerData[INDEX.YSPAWN]
 					var player = instance_create_layer(posx, posy, "Instances", obj_player)
 					player.playerID = playerData[INDEX.ID]
-					if (player.playerID == global.my_id) selfPlayer = player
+					if (player.playerID == global.my_id) {
+						selfPlayer = player
+					}
 					player.is_local = ((playerData[INDEX.ID] == global.my_id) ? true:false)
-					if (player.is_local) instance_create_layer(0,0,"GUI", obj_camera)
 					player.playerName = playerData[INDEX.NAME]
 					player.index = i
 					show_debug_message("Player Created; ID: "+ string(player.playerID) + ", Local: " + string(player.is_local))
