@@ -27,7 +27,7 @@ if (is_local) {
 	x = clamp(x, 0, room_width - sprite_width);
 	y = clamp(y, 0, room_height - sprite_height);
 
-    if(move_x!=0 && move_y!=0) {
+    if(move_x!=0 || move_y!=0) {
 		update_player_pos_to_server(x, y, index)}
 }
 

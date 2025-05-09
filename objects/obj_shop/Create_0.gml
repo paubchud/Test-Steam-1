@@ -1,3 +1,36 @@
 /// @description Insert description here
 // You can write your code in this editor
-instance_create_layer(0,0,"GUI",obj_shopButTower)
+
+var towerTab = instance_create_layer(x,y,"GUI",obj_shopTabClickable)
+towerTab.type = TAB.TOWER
+towerTab.click_function = function(){
+	image_index = TAB.TOWER
+}
+
+var enemyTab = instance_create_layer(x,y,"GUI",obj_shopTabClickable)
+enemyTab.type = TAB.ENEMY
+enemyTab.click_function = function(){
+	image_index = TAB.ENEMY
+}
+
+
+var itemsTab = instance_create_layer(x,y,"GUI",obj_shopTabClickable)
+itemsTab.type = TAB.ITEMS
+itemsTab.click_function = function(){
+	image_index = TAB.ITEMS
+}
+
+
+
+var exitTab = instance_create_layer(x,y,"GUI",obj_shopTabClickable)
+exitTab.type = TAB.EXIT
+exitTab.click_function = function(){
+	instance_destroy(self)}
+
+
+enum TAB {
+	TOWER = 1,
+	ENEMY,
+	ITEMS,
+	EXIT
+}
