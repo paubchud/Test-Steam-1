@@ -1,5 +1,3 @@
 /// @description Insert description here
 // You can write your code in this editor
-keyboard_key_press(ord("P")) {
-	click_function()
-}
+instance_create_layer(0,0,"GUI",obj_shopButTower)

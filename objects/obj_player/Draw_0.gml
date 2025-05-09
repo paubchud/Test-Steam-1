@@ -1,2 +1,2 @@
 draw_self()
-draw_text(x+16,y, playerName);
+draw_text(x-16,y-24, playerName);

@@ -3,3 +3,6 @@
 var view_w = 256;
 var view_h = 192;
 camera_set_view_size(view_camera[0], view_w, view_h);
+
+// Create GUI Objects
+instance_create_layer(0,0,"GUI", obj_shopButton)

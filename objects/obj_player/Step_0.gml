@@ -1,9 +1,9 @@
 if (is_local && !instance_exists(obj_camera))
-	instance_create_layer(0,0,"GUI", obj_camera)
+	global.camera = instance_create_layer(0,0,"GUI", obj_camera)
 
 if (is_local) {
-	var move_x = keyboard_check(ord("A")) - keyboard_check(ord("D"));
-	var move_y = keyboard_check(ord("W")) - keyboard_check(ord("S"));
+	var move_x = keyboard_check(ord("D")) - keyboard_check(ord("A"));
+	var move_y = keyboard_check(ord("S")) - keyboard_check(ord("W"));
 
 	// Normalize diagonal movement
 	if (move_x != 0 || move_y != 0) {
@@ -27,6 +27,7 @@ if (is_local) {
 	x = clamp(x, 0, room_width - sprite_width);
 	y = clamp(y, 0, room_height - sprite_height);
 
-    if(x!=0 && y!=0) update_player_pos_to_server(x, y, index);
+    if(move_x!=0 && move_y!=0) {
+		update_player_pos_to_server(x, y, index)}
 }
 

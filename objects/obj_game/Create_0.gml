@@ -10,5 +10,3 @@ if (steam_lobby_is_owner()) {
 global.client = instance_create_layer(0,16,"Instances", obj_client)
 show_debug_message("[debug] Client obj created")
 
-// Create GUI Objects
-instance_create_layer(0,0,"GUI", obj_shopButton)
