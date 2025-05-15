@@ -12,6 +12,13 @@ enum INDEX {
 	YSPAWN = 3,
 	DATA = 4
 }
+enum CLASS {
+		WARRIOR = 10,
+		MAGE = 20,
+		SHAMEN = 30,
+		CLERIC = 40,
+		OCCULT = 50
+}
 inbuf = buffer_create(1, buffer_grow, 1)
 
 // initialize host
