@@ -65,6 +65,7 @@
     {"id":{"name":"Helpful_Scripts","path":"scripts/Helpful_Scripts/Helpful_Scripts.yy",},},
     {"id":{"name":"Packet_Handeling","path":"scripts/Packet_Handeling/Packet_Handeling.yy",},},
     {"id":{"name":"button1","path":"sprites/button1/button1.yy",},},
+    {"id":{"name":"spr_board","path":"sprites/spr_board/spr_board.yy",},},
     {"id":{"name":"spr_button_mask","path":"sprites/spr_button_mask/spr_button_mask.yy",},},
     {"id":{"name":"spr_buttonClickable","path":"sprites/spr_buttonClickable/spr_buttonClickable.yy",},},
     {"id":{"name":"spr_client","path":"sprites/spr_client/spr_client.yy",},},

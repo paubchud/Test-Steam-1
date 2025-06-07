@@ -5,6 +5,7 @@ selfPlayer = isHost ? instance_find(obj_player, 0): undefined
 data = 0
 playerToBeAdded = false;
 spawnMult = 16
+
 enum INDEX {
 	NAME = 0,
 	ID = 1,

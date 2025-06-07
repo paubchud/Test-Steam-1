@@ -10,3 +10,10 @@ if (steam_lobby_is_owner()) {
 global.client = instance_create_layer(0,16,"Instances", obj_client)
 show_debug_message("[debug] Client obj created")
 
+// Create board
+global.board = array_create(room_width/16, array_create(room_height/16, 0))
+enum BOARD {
+	NA = 0,
+	PLAYER = 1,
+	ATTACK = 2
+}
