@@ -5,6 +5,12 @@ var towerTab = instance_create_layer(x,y,"GUI",obj_shopTabClickable)
 towerTab.type = TAB.TOWER
 towerTab.click_function = function(){
 	image_index = TAB.TOWER
+	instance_create_layer(x-24,y-8,"GUIOVER",obj_towerClickable)
+	instance_create_layer(x,y-8,"GUIOVER",obj_towerClickable)
+	instance_create_layer(x+24,y-8,"GUIOVER",obj_towerClickable)
+	instance_create_layer(x-24,y+15,"GUIOVER",obj_towerClickable)
+	instance_create_layer(x,y+15,"GUIOVER",obj_towerClickable)
+	instance_create_layer(x+24,y+15,"GUIOVER",obj_towerClickable)
 }
 
 var enemyTab = instance_create_layer(x,y,"GUI",obj_shopTabClickable)

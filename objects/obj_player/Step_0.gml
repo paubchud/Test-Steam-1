@@ -31,3 +31,4 @@ if (is_local) {
 		update_player_pos_to_server(x, y, index)}
 }
 
+

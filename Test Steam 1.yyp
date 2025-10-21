@@ -57,6 +57,7 @@
     {"id":{"name":"obj_shopTabClickable","path":"objects/obj_shopTabClickable/obj_shopTabClickable.yy",},},
     {"id":{"name":"obj_steam","path":"objects/obj_steam/obj_steam.yy",},},
     {"id":{"name":"obj_tower","path":"objects/obj_tower/obj_tower.yy",},},
+    {"id":{"name":"obj_towerClickable","path":"objects/obj_towerClickable/obj_towerClickable.yy",},},
     {"id":{"name":"path_default1","path":"paths/path_default1/path_default1.yy",},},
     {"id":{"name":"path_default2","path":"paths/path_default2/path_default2.yy",},},
     {"id":{"name":"rm_game","path":"rooms/rm_game/rm_game.yy",},},
